@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product List</title>
+</head>
+<body>
+<h1>Product List</h1>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="resparent : ${resparents}">
+        <td th:text="${resparent.firstName}"></td>
+        <td th:text="${resparent.lastName}"></td>
+        <td th:text="${resparent.phoneNumber}"></td>
+        <td th:text="${resparent.email}"></td>
+        <td>
+            <a th:href="@{'/edit-resparent/' + ${resparent.id}}">Edit</a> |
+            <a th:href="@{'/delete-resparent/' + ${resparent.id}}">Delete</a>
+        </td>
+    </tr>
+</table>
+<a th:href="@{/add-resparent}">Add Product</a>
+</body>
+</html>

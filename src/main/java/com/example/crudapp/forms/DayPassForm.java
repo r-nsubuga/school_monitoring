@@ -1,37 +1,12 @@
-package com.example.crudapp.model;
+package com.example.crudapp.forms;
 
-import jakarta.persistence.*;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.*;
+public class DayPassForm {
 
-import java.util.List;
-
-@Entity
-@Table(name="DayPass")
-@NoArgsConstructor
-@AllArgsConstructor
-@Setter
-@Getter
-@ToString
-public class DayPass {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
     private String reason;
-
 
     private int parent_approval;
     private int res_parent_approval;
     private int guard_sign_off;
-
-    @ManyToOne
-    @JoinColumn(
-            name = "student_id"
-    )
-    private DayPass daypass;
 
     public String getReason() {
         return reason;

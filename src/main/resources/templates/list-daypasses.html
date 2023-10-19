@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product List</title>
+</head>
+<body>
+<h1>Product List</h1>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="daypass : ${daypasses}">
+        <td th:text="${daypass.reason}"></td>
+        <td th:text="${daypass.parent_approval}"></td>
+        <td th:text="${daypass.res_parent_approval}"></td>
+        <td>
+            <a th:href="@{'/edit-daypass/' + ${daypass.id}}">Edit</a> |
+            <a th:href="@{'/delete-daypass/' + ${daypass.id}}">Delete</a>
+        </td>
+    </tr>
+</table>
+<a th:href="@{/add-daypass}">Add Product</a>
+</body>
+</html>

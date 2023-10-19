@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,13 +28,11 @@ public class Parent {
     public String email;
 
     @OneToMany(
-            cascade = CascadeType.ALL
+            cascade = CascadeType.ALL,
+            mappedBy = "parent"
     )
-    @JoinColumn(
-            name = "parent_id",
-            referencedColumnName = "id"
-    )
-    private List<Student> students;
+
+    private List<Student> students = new ArrayList<>();
 
 
     public String getFirstName() {

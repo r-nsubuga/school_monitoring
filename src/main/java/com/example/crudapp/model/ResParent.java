@@ -27,11 +27,9 @@ public class ResParent {
     public String email;
 
     @OneToMany(
-            cascade = CascadeType.ALL
-    )
-    @JoinColumn(
-            name = "res_parent_id",
-            referencedColumnName = "id"
+            cascade = CascadeType.ALL,
+            mappedBy = "resparent"
+
     )
     private List<Student> students;
 

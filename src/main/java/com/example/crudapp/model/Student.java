@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,11 +31,20 @@ public class Student {
     @OneToMany(
             cascade = CascadeType.ALL
     )
+
+    private List<DayPass> dayPasses =  new ArrayList<>();
+
+    @ManyToOne
     @JoinColumn(
-            name = "student_id",
-            referencedColumnName = "id"
+            name = "parent_id"
     )
-    private List<DayPass> dayPasses;
+    private Parent parent;
+
+    @ManyToOne
+    @JoinColumn(
+            name = "res_parent_id"
+    )
+    private ResParent resparent;
 
     public String getFirstName() {
         return firstName;

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Product</title>
+</head>
+<body>
+<h1>Add Product</h1>
+<form th:action="@{/save-daypass}" th:object="${daypass}" method="post">
+    <label>Reason: <input type="text" th:field="*{reason}" /></label><br/>
+    <label>parent_approval: <input type="text" th:field="*{parent_approval}" /></label><br/>
+    <label>parent_approval: <input type="text" th:field="*{res_parent_approval}" /></label><br/>
+    <label>parent_approval: <input type="text" th:field="*{guard_sign_off}" /></label><br/>
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>
