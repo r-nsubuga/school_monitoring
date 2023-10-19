@@ -29,10 +29,11 @@ public class Student {
     public String email;
 
     @OneToMany(
-            cascade = CascadeType.ALL
+            cascade = CascadeType.ALL,
+            mappedBy = "student"
     )
 
-    private List<DayPass> dayPasses =  new ArrayList<>();
+    private List<DayPass> daypasses =  new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(

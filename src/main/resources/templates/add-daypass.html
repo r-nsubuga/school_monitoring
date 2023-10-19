@@ -10,6 +10,10 @@
     <label>parent_approval: <input type="text" th:field="*{parent_approval}" /></label><br/>
     <label>parent_approval: <input type="text" th:field="*{res_parent_approval}" /></label><br/>
     <label>parent_approval: <input type="text" th:field="*{guard_sign_off}" /></label><br/>
+    <label for="student">Student:</label>
+    <select id="student" name="student.id" th:field="*{student.id}">
+        <option th:each="student : ${students}" th:value="${student.id}" th:text="${student.firstName}"></option>
+    </select>
     <button type="submit">Save</button>
 </form>
 </body>

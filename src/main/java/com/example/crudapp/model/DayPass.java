@@ -31,7 +31,7 @@ public class DayPass {
     @JoinColumn(
             name = "student_id"
     )
-    private DayPass daypass;
+    private Student student;
 
     public String getReason() {
         return reason;

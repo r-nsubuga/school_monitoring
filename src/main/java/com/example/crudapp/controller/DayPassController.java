@@ -2,7 +2,10 @@ package com.example.crudapp.controller;
 
 import com.example.crudapp.forms.DayPassForm;
 import com.example.crudapp.model.DayPass;
+import com.example.crudapp.model.Parent;
+import com.example.crudapp.model.Student;
 import com.example.crudapp.repo.DayPassRepo;
+import com.example.crudapp.repo.StudentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +21,10 @@ public class DayPassController {
 
     @Autowired
     private DayPassRepo dayPassRepo;
+    @Autowired
+    private StudentRepo studentRepo;
+
+//    private Long id = new Long(102);
 
     @GetMapping("/daypasses")
     public String listDayPasses(Model model) {
@@ -29,11 +36,17 @@ public class DayPassController {
     @GetMapping("/add-daypass")
     public String showDayPassForm(Model model) {
         model.addAttribute("daypass", new DayPass());
+        List<Student> studentList = studentRepo.findAll();
+        model.addAttribute("students", studentList);
         return "add-daypass";
     }
 
     @PostMapping("/save-daypass")
     public String saveDayPass(@ModelAttribute("daypass") DayPass dayPass) {
+
+//        Student student = studentRepo.findById("102").orElse(null);
+
+//        System.out.println(student);
         dayPassRepo.save(dayPass);
         return "redirect:/daypasses";
     }
@@ -42,6 +55,8 @@ public class DayPassController {
     public String showEditDayPassForm(@PathVariable Long id, Model model) {
         DayPass dayPass = dayPassRepo.findById(id).orElse(null);
         model.addAttribute("daypass", dayPass);
+        List<Student> studentList = studentRepo.findAll();
+        model.addAttribute("students", studentList);
         return "edit-daypass";
     }
 
