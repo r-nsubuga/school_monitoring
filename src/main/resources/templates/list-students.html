@@ -1,34 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>List of Books</title>
-</head>
-<body>
-<h1>List of Books</h1>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Actions</th>
-    </tr>
-    <tr th:each="student : ${students}">
-        <td th:text="${student.id}"></td>
-        <td th:text="${student.firstName}"></td>
-        <td th:text="${student.parent.firstName}"></td>
-        <td>
-            <a th:href="@{'/edit-student/' + ${student.id}}">Edit</a> |
-            <a th:href="@{'/delete-student/' + ${student.id}}">Delete</a>
-        </td>
-    </tr>
-</table>
-<a th:href="@{/add-student}">Add Product</a>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Add Day Pass</title>
@@ -77,13 +49,14 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <h1>PARENT LIST</h1>
+            <h1>STUDENT LIST</h1>
             <table class="table">
                 <tr>
                     <th scope="col">FIRSTNAME</th>
                     <th scope="col">LASTNAME</th>
                     <th scope="col">PHONE NUMBER</th>
                     <th scope="col">EMAIL</th>
+                    <th scope="col">GRADE</th>
                     <th scope="col">ACTIONS</th>
                 </tr>
                 <tr th:each="student : ${students}">
@@ -91,15 +64,16 @@
                     <td th:text="${student.lastName}"></td>
                     <td th:text="${student.phoneNumber}"></td>
                     <td th:text="${student.email}"></td>
+                    <td th:text="${student.grade}"></td>
                     <td>
-                        <a th:href="@{'/edit-parent/' + ${parent.id}}">Edit</a> |
-                        <a th:href="@{'/delete-parent/' + ${parent.id}}">Delete</a>
+                        <a th:href="@{'/edit-student/' + ${student.id}}">Edit</a> |
+                        <a th:href="@{'/delete-student/' + ${student.id}}">Delete</a>
                     </td>
                 </tr>
             </table>
         </div>
         <div class="col-md-2"></div>
-        <a th:href="@{/add-parent}">ADD PARENT</a>
+        <a th:href="@{/add-student}">ADD STUDENT</a>
     </div>
 
 </div>
