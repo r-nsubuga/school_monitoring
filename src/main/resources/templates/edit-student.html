@@ -1,44 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Edit Book</title>
-</head>
-<body>
-<h1>Edit Book</h1>
-
-<form method="post" th:object="${student}" th:action="@{/save-student}">
-    <input type="hidden" th:field="*{id}" />
-    <label for="firstName">firstName:</label>
-    <input type="text" id="firstName" name="firstName" th:field="*{firstName}" />
-
-    <label for="lastName">lastName:</label>
-    <input type="text" id="lastName" name="lastName" th:field="*{lastName}" />
-
-    <label for="grade">grade:</label>
-    <input type="text" id="grade" name="grade" th:field="*{grade}" />
-
-    <label for="phoneNumber">phoneNumber:</label>
-    <input type="text" id="phoneNumber" name="phoneNumber" th:field="*{phoneNumber}" />
-
-    <label for="email">email:</label>
-    <input type="email" id="email" name="email" th:field="*{email}" />
-
-    <label for="parent">Parent:</label>
-    <select id="parent" name="parent.id" th:field="*{parent.id}">
-        <option th:each="parent : ${parents}" th:value="${parent.id}" th:text="${parent.firstName}"></option>
-    </select>
-    <label for="resparent">Residential Parent:</label>
-    <select id="resparent" name="resparent.id" th:field="*{resparent.id}">
-        <option th:each="resparent : ${resparents}" th:value="${resparent.id}" th:text="${resparent.firstName}"></option>
-    </select>
-    <button type="submit">Save</button>
-</form>
-<a th:href="@{/students}">Back to Books</a>
-</body>
-</html>
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Add Day Pass</title>
