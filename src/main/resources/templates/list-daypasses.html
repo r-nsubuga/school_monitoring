@@ -55,12 +55,24 @@
                     <th scope="col">REASON</th>
                     <th scope="col">PARENT APPROVAL</th>
                     <th scope="col">RESIDENTIAL PARENT APPROVAL</th>
+                    <th scope="col">SECURITY GUARD SIGNOFF</th>
                     <th scope="col">ACTIONS</th>
                 </tr>
                 <tr th:each="daypass : ${daypasses}">
                     <td th:text="${daypass.reason}"></td>
-                    <td th:text="${daypass.parent_approval}"></td>
-                    <td th:text="${daypass.res_parent_approval}"></td>
+                    <td th:if="${daypass.parent_approval eq 0 }">
+                        NOT YET APPROVED
+                    </td>
+                    <td th:else th:if="${daypass.parent_approval eq 1 }">
+                        APPROVED
+                    </td>
+                    <td th:if="${daypass.res_parent_approval eq 0 }">
+                        NOT YET APPROVED
+                    </td>
+                    <td th:else th:if="${daypass.res_parent_approval eq 1 }">
+                        APPROVED
+                    </td>
+                    <td th:text="${daypass.guard_sign_off}"></td>
                     <td>
                         <a th:href="@{'/edit-daypass/' + ${daypass.id}}">Edit</a> |
                         <a th:href="@{'/delete-daypass/' + ${daypass.id}}">Delete</a>

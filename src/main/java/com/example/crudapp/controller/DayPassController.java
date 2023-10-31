@@ -54,6 +54,7 @@ public class DayPassController {
     @GetMapping("/edit-daypass/{id}")
     public String showEditDayPassForm(@PathVariable Long id, Model model) {
         DayPass dayPass = dayPassRepo.findById(id).orElse(null);
+        //System.out.println(dayPass.getReason());
         model.addAttribute("daypass", dayPass);
         List<Student> studentList = studentRepo.findAll();
         model.addAttribute("students", studentList);
