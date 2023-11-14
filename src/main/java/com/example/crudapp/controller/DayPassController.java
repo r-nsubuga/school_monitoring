@@ -1,6 +1,6 @@
 package com.example.crudapp.controller;
 
-import com.example.crudapp.forms.DayPassForm;
+//import com.example.crudapp.forms.DayPassForm;
 import com.example.crudapp.model.DayPass;
 import com.example.crudapp.model.Parent;
 import com.example.crudapp.model.Student;
@@ -16,6 +16,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
+/**
+ * Controller class handling HTTP requests related to DayPass entities.
+ * Utilizes Thymeleaf templates for rendering views.
+ */
 @Controller
 public class DayPassController {
 
@@ -26,6 +30,12 @@ public class DayPassController {
 
 //    private Long id = new Long(102);
 
+    /**
+     * Handles GET request to display a list of all DayPass entities.
+     *
+     * @param model the model to be populated and passed to the view
+     * @return the view name for listing DayPass entities
+     */
     @GetMapping("/daypasses")
     public String listDayPasses(Model model) {
         List<DayPass> dayPassList = dayPassRepo.findAll();
@@ -33,6 +43,12 @@ public class DayPassController {
         return "list-daypasses";
     }
 
+    /**
+     * Handles GET request to display the form for adding a new DayPass entity.
+     *
+     * @param model the model to be populated and passed to the view
+     * @return the view name for adding a DayPass entity
+     */
     @GetMapping("/add-daypass")
     public String showDayPassForm(Model model) {
         model.addAttribute("daypass", new DayPass());
@@ -41,6 +57,12 @@ public class DayPassController {
         return "add-daypass";
     }
 
+    /**
+     * Handles POST request to save a new DayPass entity.
+     *
+     * @param dayPass the DayPass entity to be saved
+     * @return the redirect URL to the list of DayPass entities
+     */
     @PostMapping("/save-daypass")
     public String saveDayPass(@ModelAttribute("daypass") DayPass dayPass) {
 
@@ -51,6 +73,13 @@ public class DayPassController {
         return "redirect:/daypasses";
     }
 
+    /**
+     * Handles GET request to display the form for editing an existing DayPass entity.
+     *
+     * @param id    the ID of the DayPass entity to be edited
+     * @param model the model to be populated and passed to the view
+     * @return the view name for editing a DayPass entity
+     */
     @GetMapping("/edit-daypass/{id}")
     public String showEditDayPassForm(@PathVariable Long id, Model model) {
         DayPass dayPass = dayPassRepo.findById(id).orElse(null);
@@ -61,35 +90,17 @@ public class DayPassController {
         return "edit-daypass";
     }
 
+    /**
+     * Handles GET request to delete an existing DayPass entity.
+     *
+     * @param id the ID of the DayPass entity to be deleted
+     * @return the redirect URL to the list of DayPass entities
+     */
     @GetMapping("/delete-daypass/{id}")
     public String deleteDayPass(@PathVariable Long id) {
         dayPassRepo.deleteById(id);
         return "redirect:/daypasses";
     }
-
-
-
-
-
-//
-//    @GetMapping("/daypass")
-//    public String dayPassForm(Model model){
-//        model.addAttribute("daypass", new DayPassForm());
-//        return "daypassform";
-//    }
-//
-//    @PostMapping("/daypass")
-//    public String dayPassSubmit(@ModelAttribute DayPassForm dayPassForm, Model model, DayPassRepo repo){
-//        model.addAttribute("dayPassFormResults", dayPassForm);
-////        repo.save(new DayPass(dayPassForm.getReason(),dayPassForm.getParent_approval(),dayPassForm.getRes_parent_approval(),dayPassForm.getGuard_sign_off()));
-//        System.out.println(dayPassForm.getReason());
-//        return "redirect:/result";
-//    }
-//
-//    @GetMapping("/result")
-//    public String dayPassFormResult(Model model){
-//        return "result";
-//    }
 
 
 }

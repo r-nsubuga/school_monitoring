@@ -21,12 +21,18 @@ public class Parent {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    // First name of the parent
     private String firstName;
+    // Last name of the parent
     private String lastName;
 
+    // Phone number of the parent
     private String phoneNumber;
+
+    // Email address of the parent
     public String email;
 
+    // One-to-Many relationship with Student entities
     @OneToMany(
             cascade = CascadeType.ALL,
             mappedBy = "parent"
@@ -35,6 +41,7 @@ public class Parent {
     private List<Student> students = new ArrayList<>();
 
 
+    // Getter and Setter methods for 'firstName'
     public String getFirstName() {
         return firstName;
     }
@@ -43,6 +50,7 @@ public class Parent {
         this.firstName = firstName;
     }
 
+    // Getter and Setter methods for 'lastName'
     public String getLastName() {
         return lastName;
     }
@@ -51,6 +59,7 @@ public class Parent {
         this.lastName = lastName;
     }
 
+    // Getter and Setter methods for 'phoneNumber'
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -59,6 +68,7 @@ public class Parent {
         this.phoneNumber = phoneNumber;
     }
 
+    // Getter and Setter methods for 'email'
     public String getEmail() {
         return email;
     }

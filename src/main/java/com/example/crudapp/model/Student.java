@@ -21,13 +21,23 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    // First name of the student
     private String firstName;
+
+    // Last name of the student
     private String lastName;
 
+    // Grade of the student
     private String grade;
+
+    // Phone number of the student
     private String phoneNumber;
+
+    // Email address of the student
     public String email;
 
+    // List of day passes associated with the student
     @OneToMany(
             cascade = CascadeType.ALL,
             mappedBy = "student"
@@ -35,18 +45,21 @@ public class Student {
 
     private List<DayPass> daypasses =  new ArrayList<>();
 
+    // Parent associated with the student
     @ManyToOne
     @JoinColumn(
             name = "parent_id"
     )
     private Parent parent;
 
+    // Residential parent associated with the student
     @ManyToOne
     @JoinColumn(
             name = "res_parent_id"
     )
     private ResParent resparent;
 
+    // Getter and Setter methods for 'firstName'
     public String getFirstName() {
         return firstName;
     }
@@ -55,6 +68,7 @@ public class Student {
         this.firstName = firstName;
     }
 
+    // Getter and Setter methods for 'lastName'
     public String getLastName() {
         return lastName;
     }
@@ -63,6 +77,7 @@ public class Student {
         this.lastName = lastName;
     }
 
+    // Getter and Setter methods for 'grade'
     public String getGrade() {
         return grade;
     }
@@ -71,6 +86,7 @@ public class Student {
         this.grade = grade;
     }
 
+    // Getter and Setter methods for 'phoneNumber'
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -79,6 +95,7 @@ public class Student {
         this.phoneNumber = phoneNumber;
     }
 
+    // Getter and Setter methods for 'email'
     public String getEmail() {
         return email;
     }
