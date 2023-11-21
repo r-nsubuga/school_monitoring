@@ -14,7 +14,7 @@ import lombok.*;
 @Setter
 @Getter
 @ToString
-public class SecurityGuard {
+public class SecurityGuard{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

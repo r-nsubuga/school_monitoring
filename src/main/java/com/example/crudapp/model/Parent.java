@@ -17,7 +17,7 @@ import java.util.List;
 @Setter
 @Getter
 @ToString
-public class Parent {
+public class Parent{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
